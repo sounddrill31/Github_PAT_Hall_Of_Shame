@@ -15,6 +15,8 @@ jobs:
 
       - name: Purge PATs file
         run: |
+          git config --global user.email "you@example.com"
+          git config --global user.name "Your Name" # (I cba to change lol)
           git add -A
           git commit -m "Temp commit"
           git rm --cached PATs.md
