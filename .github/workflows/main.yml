@@ -18,9 +18,9 @@ jobs:
         run: |
           git config --global user.email "you@example.com"
           git config --global user.name "Your Name" # (I cba to change lol)
-          git add -A
           git commit -m "Temp commit"
           rm PATs.md -f
           touch PATs.md
+          git add -A
           git commit -m "Wipe PATs.md"
           git push -f origin main
