@@ -1,8 +1,8 @@
-name: Purge PATs file
+name: Purge PATs file and Remove TXT Files
 
 on:
   schedule:
-    - cron: '0 0 */7 * *' # Every 7 days at 00:00
+    - cron: '0 0 */7 * *'
   workflow_dispatch:
 
 jobs:
@@ -10,17 +10,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
-          fetch-depth: 0 # Fetch the entire history of the repository
+          fetch-depth: 0
 
-      - name: Purge PATs file
+      - name: Purge PATs file and Remove TXT Files
         run: |
-          git config --global user.email "you@example.com"
-          git config --global user.name "Your Name" # (I cba to change lol)
-          git commit -m "Temp commit"
+          git config --global user.email "github-actions@github.com"
+          git config --global user.name "GitHub Actions"
           rm PATs.md -f
+          find . -name "*.txt" -type f -delete
           touch PATs.md
           git add -A .
-          git commit -m "Wipe PATs.md"
-          git push -f origin main
+          git commit -m "Wipe PATs.md and remove TXT files"
+          git push origin main
